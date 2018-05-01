@@ -41,7 +41,7 @@ bool brake(){
 }
 
 void drive(float current,int vesc){
-  if(digitalRead(15) || current>10 || current<-10){
+  if(digitalRead(15) || current>20 || current<-20){
     VescUartSetCurrentBrake(10,0);
     VescUartSetCurrentBrake(10,1);
   }
@@ -103,7 +103,7 @@ void serial_task(void *pvParameter){
           break;
       }
     }*/
-  if(kalAngleY>10 && kalAngleY<30){
+  if(kalAngleY>10 && kalAngleY<30 && false){
     Input = kalAngleY;
     myPID.Compute();
     drive(Output,0);
